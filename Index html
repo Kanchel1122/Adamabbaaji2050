@@ -4,21 +4,21 @@
    <title>my profile!</title>
  </head>
  <body>
-  <nav>
+   this is a website that was founded by me
       <h1> Bio about me</h1>
       <p> my name's are Adam Abba aji, i am leaving in Maiduguri capital of borno. i am an undergraduate in borno state University.</p>
       <img src="img/ads:ipg><alt=" my picture">
+    <nav>
     <ul>
-       <li><a href="#" home pages></a></li>
-       <li><a href="#" about me></a></li>
-       <li><a href="#" contact></a></li>
-   </ul>
+       <li><a href="#"> home pages></a></li>
+       <li><a href="#">about me></a></li>
+       <li><a href="#">contact></a></li>
+   </nav>
     <footer>
-       <li><a href="#" adam abba aji @facebook></a></li>
-       <li><a href="#" kanchel @YouTube channel></a></li>
-       <li><a href="#" Adam Abba Aji @telegram ></a></li>
+       <li><a href="#">adam abba aji @facebook></a></li>
+       <li><a href="#">kanchel @YouTube channel></a></li>
+       <li><a href="#">Adam Abba Aji @telegram ></a></li>
     </footer>
-   </ul>
-  </nav>
+  </ul>
  </body>
 </html>
