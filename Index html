@@ -4,14 +4,14 @@ index html
    <title>my profile</title>
  </head>
  <body>
+<nav>
    <h1> Bio about me</h1>
    <p> my name's are Adam Abba aji, i am leaving in Maiduguri capital of borno. i am an undergraduate in borno state University.</p>
    <img scr="img/ads:ipg>
-   <nav>
     <ul>
-    <li><a portfolio></a></li>
-    <li><a about me></a></li>
-    <li><a contact></a></li>
+    <li><a href="#" portfolio></a></li>
+    <li><a href="#" about me></a></li>
+    <li><a href="#" contact></a></li>
   </nav>
   <div>
   <footer>
@@ -20,4 +20,5 @@ index html
      <li><a href="#" @email></a></li>
    </footer>
     </div>
+  </nav>
 </html>
