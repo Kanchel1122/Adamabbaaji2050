@@ -1,24 +1,24 @@
-index html 
+<!index html> 
 <html>
  <head>
-   <title>my profile</title>
+   <title>my profile!</title>
  </head>
  <body>
-<nav>
-   <h1> Bio about me</h1>
-   <p> my name's are Adam Abba aji, i am leaving in Maiduguri capital of borno. i am an undergraduate in borno state University.</p>
-   <img scr="img/ads:ipg>
+  <nav>
+      <h1> Bio about me</h1>
+      <p> my name's are Adam Abba aji, i am leaving in Maiduguri capital of borno. i am an undergraduate in borno state University.</p>
+      <img src="img/ads:ipg><alt=" my picture">
     <ul>
-    <li><a href="#" portfolio></a></li>
-    <li><a href="#" about me></a></li>
-    <li><a href="#" contact></a></li>
+       <li><a href="#" home pages></a></li>
+       <li><a href="#" about me></a></li>
+       <li><a href="#" contact></a></li>
+   </ul>
+    <footer>
+       <li><a href="#" adam abba aji @facebook></a></li>
+       <li><a href="#" kanchel @YouTube channel></a></li>
+       <li><a href="#" Adam Abba Aji @telegram ></a></li>
+    </footer>
+   </ul>
   </nav>
-  <div>
-  <footer>
-     <li><a href="#" kanchel x channel></a></li>
-     <li><a href="#" kanchel YouTube channel></a></li>
-     <li><a href="#" @email></a></li>
-   </footer>
-    </div>
-  </nav>
+ </body>
 </html>
