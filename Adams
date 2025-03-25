@@ -1,0 +1,44 @@
+<!index.html>
+html
+Header Section
+```
+<header>
+  <h1>My Profile</h1>
+  <nav>
+    <ul>
+      <li>About Me</li>
+      <li>Hobbies</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+</header>
+```
+Bio Section
+```
+<body>
+  <h2>About Me</h2>
+  <img src="ads-image.jpg" alt=" Adam Abba Aji">
+  <p> My name's are Adam Abba Aji, i leave in Maiduguri capital of borno state in nigeria.<bra> i am an undergraduate in borno state university BOSU.i am a person who like to learn new things</p>
+</section>
+```
+
+Hobbies Section
+```
+<id="hobbies">
+  <h2>Hobbies</h2>
+  <ul>
+    <li><a href="#">Reading</li>
+    <li><a href="#">about me</li>
+    <li><a href="#">contact</li>
+  </ul>
+</section>
+```
+
+Footer Section
+```
+<footer>
+  <h2>Contact</h2>
+  <p>Email: <a href="mail-adamabbaaji18@gmail.com"<bra>adamabbaji2050@gmail.com.com</a></p>
+</footer>
+</body>
+</html>
