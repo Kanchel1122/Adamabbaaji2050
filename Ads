@@ -15,13 +15,14 @@
      <li><a href="#contact">Contact</a></li>
     </ul>
    </nav>
-  <id="section">
-     <img src="img/ads:ipg><alt=" Adam Abba Aji">
+  </header>
+  <sec>
+     <img src="img/ads image:ipg><alt=" Adam Abba Aji"><</img>
      <h2> id="about">About</h2>
      <p>Hello, my name's are Adam Abba Aji and I am a software development student at darey.io under 3mtt. with a passion for creating innovative solutions.</p>
      <h2> id="education">Education</h2>
      <p>I am an undergraduate at Borno state University BOSU. studying biotechnology.</p>
-  </section>
+  </sec>
  <footer>
     <p>You can reach me at johndoe@email.com or (+234) 802-5922-159</p>
  </footer>
