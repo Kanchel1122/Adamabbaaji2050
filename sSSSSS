@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unlock the world lake of dresses and clothes">
+  <title>Abba aji and son textile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <section class="hero">
+      <h1>Welcome to Abba Aji textile Enterprise</h1>
+      <p>Unlock the world lake of dresses and clothes</p>
+      <button>Sign Up Now</button>
+    </section>
+  </header>
+
+  <main>
+    <section class="features">
+      <div class="feature">
+        <img src="icon1.png" alt="my logo 1">
+        <h2>Feature 1</h2>
+        <p> to make your dress beautiful and decently .</p>
+      </div>
+      <div class="feature">
+        <img src="icon2.png" alt="logo 2">
+        <h2>Feature 2</h2>
+        <p> to make you look so nice</p>
+      </div>
+      <div class="feature">
+        <img src="icon3.png" alt="Feature 3">
+        <h2>Feature 3</h2>
+        <p> it's your choice to cover your body with our product .</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Our Company</p>
+    <ul>
+      <li><a href="mailto:info@adamabbaaji18@gmail.com">info@admabbaaji18@gmail.com</a></li>
+      <li><a href="tel:+2348025922159">+234-2592-2159</a></li>
+      <li><a href="https://www.abbajitextile.com/" target="_blank">abbaajitextile</a></li>
+    </ul>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.feature {
+  flex-basis: 30%;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .feature {
+    flex-basis: 100%;
+    margin: 20px 0;
+  }
+}
