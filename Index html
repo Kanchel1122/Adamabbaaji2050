@@ -1,24 +1,32 @@
-<!index html> 
+<!DOCTYPE html>
 <html>
- <head>
-   <title>my profile!</title>
- </head>
- <body>
-   this is a website that was founded by me
-      <h1> Bio about me</h1>
-      <p> my name's are Adam Abba aji, i am leaving in Maiduguri capital of borno. i am an undergraduate in borno state University.</p>
-      <img src="img/ads:ipg><alt=" my picture">
-    <nav>
+<head>
+  <title>My Personal Profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <nav>
     <ul>
-       <li><a href="#"> home pages></a></li>
-       <li><a href="#">about me></a></li>
-       <li><a href="#">contact></a></li>
-   </nav>
-    <footer>
-       <li><a href="#">adam abba aji @facebook></a></li>
-       <li><a href="#">kanchel @YouTube channel></a></li>
-       <li><a href="#">Adam Abba Aji @telegram ></a></li>
-    </footer>
-  </ul>
- </body>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section>
+      <img src="img/adam abba aji_image.jpg" alt="Profile picture of Adam Abba Aji">
+      <h2 id="about">About</h2>
+      <p>Hello, my name is Adam Abba Aji and I am a software development student at darey.io under 3mtt, with a passion for creating innovative solutions.</p>
+      <h2 id="education">Education</h2>
+      <p>I am an undergraduate at Borno State University (BOSU), studying biotechnology.</p>
+    </section>
+  </main>
+  <footer>
+    <h2 id="contact">Contact</h2>
+    <p>You can reach me at <a href="mailto:adamabbaaji18@gmail.com">adamabbaaji18@gmail.com</a> or <a href="tel:+2348025922159">(+234) 802-5922-159</a></p>
+    <p>&copy; 2025 Adam Abba Aji</p>
+  </footer>
+</body>
 </html>
