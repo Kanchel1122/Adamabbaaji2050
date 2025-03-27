@@ -35,7 +35,6 @@
 
 
 
-// script.js
 const display = document.getElementById('display');
 const clearButton = document.getElementById('clear');
 const equalButton = document.getElementById('equal');
@@ -100,4 +99,47 @@ clearButton.addEventListener('click', () => {
     previousNumber = '';
     currentOperation = null;
     display.value = '';
-});
+});/
+
+
+* Basic styling for calculator */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    max-width: 200px;
+}
+
+#display {
+    grid-column: span 4;
+    padding: 10px;
+    text-align: right;
+    font-size: 1.5em;
+}
+
+button {
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+button.operation {
+    background-color: #f0ad4e;
+}
+
+button.clear {
+    background-color: #d9534f;
+}
+
+button.equal {
+    background-color: #5cb85c;
+}
