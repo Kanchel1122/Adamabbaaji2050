@@ -1,32 +1,41 @@
-<!index.html>
+<!DOCTYPE html>
 <html>
-<header>
-  <h1>My Profile</h1>
-  <nav>
-    <ul>
-      <li>About Me</li>
-      <li>Hobbies</li>
-      <li>Contact</li>
-    </ul>
-  </nav>
-</header>
+<head>
+	<title>Calculator App</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <body>
-<id="my bio">
-  <h2>About Me</h2>
-  <img src="ads-image.jpg" alt=" Adam Abba Aji">
-  <p> My name's are Adam Abba Aji, i leave in Maiduguri capital of borno state in nigeria.<bra> i am an undergraduate in borno state university BOSU.i am a person who like to learn new things</p>
-</bio>
-<id="hobbies">
-  <h2>Hobbies</h2>
-  <ul>
-    <li><a href="#">Reading</li>
-    <li><a href="#">about me</li>
-    <li><a href="#">contact</li>
-  </ul>
-</hob>
-<footer>
-  <h2>Contact</h2>
-  <p>Email: <a href="mail-adamabbaaji18@gmail.com"<bra>adamabbaji2050@gmail.com.com</a></p>
-</footer>
+	<div class="calculator">
+		<div class="display">
+			<p id="result">0</p>
+		</div>
+		<div class="keys">
+			<button class="number" value="0">0</button>
+			<button class="number" value="1">1</button>
+			<button class="number" value="2">2</button>
+			<button class="number" value="3">3</button>
+			<button class="number" value="4">4</button>
+			<button class="number" value="5">5</button>
+			<button class="number" value="6">6</button>
+			<button class="number" value="7">7</button>
+			<button class="number" value="8">8</button>
+			<button class="number" value="9">9</button>
+			<button class="operator" value="+">+</button>
+			<button class="operator" value="-">-</button>
+			<button class="operator" value="*">*</button>
+			<button class="operator" value="/">/</button>
+			<button class="clear" value="clear">Clear</button>
+			<button class="equals" value="=">=</button>
+		</div>
+	</div>
 </body>
 </html>
+CSS:
+.calculator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.display {
+	background
