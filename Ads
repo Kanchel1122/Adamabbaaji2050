@@ -1,30 +1,96 @@
+
+Here's a basic HTML layout for the calculator UI:
+
+```
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Personal Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <header>
-   <h1>My Personal Profile</h1>
-  </header>
-   <nav>
-    <ul>
-     <li><a href="#about">About</a></li>
-     <li><a href="#education">Education</a></li>
-     <li><a href="#experience">Experience</a></li>
-     <li><a href="#contact">Contact</a></li>
-    </ul>
-   </nav>
-  </header>
-  <sec>
-     <img src="img/ads image:ipg><alt=" Adam Abba Aji"><</img>
-     <h2> id="about">About</h2>
-     <p>Hello, my name's are Adam Abba Aji and I am a software development student at darey.io under 3mtt. with a passion for creating innovative solutions.</p>
-     <h2> id="education">Education</h2>
-     <p>I am an undergraduate at Borno state University BOSU. studying biotechnology.</p>
-  </sec>
- <footer>
-    <p>You can reach me at johndoe@email.com or (+234) 802-5922-159</p>
- </footer>
- </body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button class="clear" id="clear">C</button>
+            <button class="operation" id="divide">/</button>
+            <button class="digit" id="seven">7</button>
+            <button class="digit" id="eight">8</button>
+            <button class="digit" id="nine">9</button>
+            <button class="operation" id="multiply">*</button>
+            <button class="digit" id="four">4</button>
+            <button class="digit" id="five">5</button>
+            <button class="digit" id="six">6</button>
+            <button class="operation" id="subtract">-</button>
+            <button class="digit" id="one">1</button>
+            <button class="digit" id="two">2</button>
+            <button class="digit" id="three">3</button>
+            <button class="operation" id="add">+</button>
+            <button class="digit" id="zero">0</button>
+            <button class="equal" id="equal">=</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
+```
+
+And here's some basic JavaScript to implement the functionality:
+
+```
+const display = document.getElementById('display');
+const clearButton = document.getElementById('clear');
+const equalButton = document.getElementById('equal');
+const digitButtons = document.querySelectorAll('.digit');
+const operationButtons = document.querySelectorAll('.operation');
+
+let currentNumber = '';
+let previousNumber = '';
+let currentOperation = null;
+
+digitButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        currentNumber += button.textContent;
+        display.value = currentNumber;
+    });
+});
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        previousNumber = currentNumber;
+        currentNumber = '';
+        currentOperation = button.textContent;
+    });
+});
+
+equalButton.addEventListener('click', () => {
+    let result;
+    switch (currentOperation) {
+        case '+':
+            result = parseFloat(previousNumber) + parseFloat(currentNumber);
+            break;
+        case '-':
+            result = parseFloat(previousNumber) - parseFloat(currentNumber);
+            break;
+        case '*':
+            result = parseFloat(previousNumber) * parseFloat(currentNumber);
+            break;
+        case '/':
+            result = parseFloat(previousNumber) / parseFloat(currentNumber);
+            break;
+        default:
+            result = currentNumber;
+    }
+    display.value = result.toString();
+});
+
+clearButton.addEventListener('click', () => {
+    currentNumber = '';
+    previousNumber = '';
+    currentOperation = null;
+    display.value = '';
+});
+``.
