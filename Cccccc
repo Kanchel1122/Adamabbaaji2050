@@ -1,28 +1,28 @@
-Here's a step-by-step guide to setting up a new React project and rendering "Hello World" using Create React App (CRA):
-
-### Step 1: Initialize a new React project using CRA
-Open your terminal and run the following command:
 
 ```bash
 npx create-react-app hello-world
 
-hello-world/
-  node_modules/
-  public/
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
-    reportWebVitals.js
-    setupTests.js
-  .gitignore
-  package.json
-  README.md
 
+
+hello-world/
+├── node_modules/
+├── public/
+├── src/
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+├── .gitignore
+├── package.json
+└── README.md
 import React from 'react';
+
+
+
 
 function App() {
   return (
@@ -33,6 +33,5 @@ function App() {
 }
 
 export default App;
-
-
-
+cd hello-world
+npm start
