@@ -1,33 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Personal Profile</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <header>
-    <h1>My Personal Profile</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <main>
-    <section>
-      <img src="img/ads_image.jpg" alt="Profile picture of Adam Abba Aji">
-      <h2 id="about">About</h2>
-      <p>Hello, my name is Adam Abba Aji and I am a software development student at darey.io under 3mtt, with a passion for creating innovative solutions.</p>
-      <h2 id="education">Education</h2>
-      <p>I am an undergraduate at Borno State University (BOSU), studying biotechnology.</p>
-    </section>
-  </main>
-  <footer>
-    <p>You can reach me at <a href="mailto:johndoe@email.com">johndoe@email.com</a> or <a href="tel:+2348025922159">(+234) 802-5922-159</a></p>
-  </footer>
-</body>
-</html>
+
+const display = document.getElementById('display');
+const clearButton = document.getElementById('clear');
+const equalButton = document.getElementById('equal');
+const digitButtons = document.querySelectorAll('.digit');
+const operationButtons = document.querySelectorAll('.operation');
+
+let currentNumber = '';
+let previousNumber = '';
+let currentOperation = null;
+
+const updateDisplay = (value) => {
+    display.value = value;
+};
+
+digitButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        currentNumber += button.textContent;
+        updateDisplay(currentNumber);
+    });
+});
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (currentNumber === '') return;
+        previousNumber = currentNumber;
+        currentNumber = '';
+        currentOperation = button.textContent;
+    });
+});
+
+equalButton.addEventListener('click', () => {
+    if (currentNumber === '' || previousNumber === '' || !currentOperation) return;
+
+    let result;
+    const prev = parseFloat(previousNumber);
+    const current = parseFloat(currentNumber);
+
+    switch (currentOperation) {
+        case '+':
+            result = prev + current;
+            break;
+        case '-':
+            result = prev - current;
+            break;
+        case '*':
+            result = prev * current;
+            break;
+        case '/':
+            if (current === 0) {
+                updateDisplay('Error');
+                return;
+            }
+            result = prev / current;
+            break;
+        default:
+            result = current;
+    }
+    updateDisplay(result.toString());
+    currentNumber = result.toString();
+    previousNumber = '';
+    currentOperation = null;
+});
+
+clearButton.addEventListener('click', () => {
+    currentNumber = '';
+    previousNumber = '';
+    currentOperation = null;
+    updateDisplay('');
+});
