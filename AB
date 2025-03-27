@@ -1,4 +1,32 @@
-''''bash
+import React from 'react';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>Hello World!</h1>
+    </div>
+  );
+}
+
+export default App;
+
+# Project Directory Structure
+
+hello-world/
+├── node_modules/
+├── public/
+├── src/
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+├── .gitignore
+├── package.json
+└── README.md''''bash
 import React from 'react';
 
 function App() {
