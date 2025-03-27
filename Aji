@@ -1,4 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled aria-label="Calculator display">
+        <div class="buttons">
+            <button class="clear" id="clear" aria-label="Clear">C</button>
+            <button class="operation" id="divide" aria-label="Divide">/</button>
+            <button class="digit" id="seven" aria-label="7">7</button>
+            <button class="digit" id="eight" aria-label="8">8</button>
+            <button class="digit" id="nine" aria-label="9">9</button>
+            <button class="operation" id="multiply" aria-label="Multiply">*</button>
+            <button class="digit" id="four" aria-label="4">4</button>
+            <button class="digit" id="five" aria-label="5">5</button>
+            <button class="digit" id="six" aria-label="6">6</button>
+            <button class="operation" id="subtract" aria-label="Subtract">-</button>
+            <button class="digit" id="one" aria-label="1">1</button>
+            <button class="digit" id="two" aria-label="2">2</button>
+            <button class="digit" id="three" aria-label="3">3</button>
+            <button class="operation" id="add" aria-label="Add">+</button>
+            <button class="digit" id="zero" aria-label="0">0</button>
+            <button class="equal" id="equal" aria-label="Equal">=</button>
+        </div>
+    </div>
 
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+// script.js
 const display = document.getElementById('display');
 const clearButton = document.getElementById('clear');
 const equalButton = document.getElementById('equal');
@@ -9,17 +46,15 @@ let currentNumber = '';
 let previousNumber = '';
 let currentOperation = null;
 
-const updateDisplay = (value) => {
-    display.value = value;
-};
-
+// Handle digit button clicks
 digitButtons.forEach(button => {
     button.addEventListener('click', () => {
         currentNumber += button.textContent;
-        updateDisplay(currentNumber);
+        display.value = currentNumber;
     });
 });
 
+// Handle operation button clicks
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (currentNumber === '') return;
@@ -29,42 +64,40 @@ operationButtons.forEach(button => {
     });
 });
 
+// Handle equal button click
 equalButton.addEventListener('click', () => {
-    if (currentNumber === '' || previousNumber === '' || !currentOperation) return;
-
+    if (currentOperation === null || currentNumber === '') return;
     let result;
-    const prev = parseFloat(previousNumber);
-    const current = parseFloat(currentNumber);
-
     switch (currentOperation) {
         case '+':
-            result = prev + current;
+            result = parseFloat(previousNumber) + parseFloat(currentNumber);
             break;
         case '-':
-            result = prev - current;
+            result = parseFloat(previousNumber) - parseFloat(currentNumber);
             break;
         case '*':
-            result = prev * current;
+            result = parseFloat(previousNumber) * parseFloat(currentNumber);
             break;
         case '/':
-            if (current === 0) {
-                updateDisplay('Error');
+            if (currentNumber === '0') {
+                alert('Cannot divide by zero');
                 return;
             }
-            result = prev / current;
+            result = parseFloat(previousNumber) / parseFloat(currentNumber);
             break;
         default:
-            result = current;
+            result = currentNumber;
     }
-    updateDisplay(result.toString());
+    display.value = result.toString();
     currentNumber = result.toString();
     previousNumber = '';
     currentOperation = null;
 });
 
+// Handle clear button click
 clearButton.addEventListener('click', () => {
     currentNumber = '';
     previousNumber = '';
     currentOperation = null;
-    updateDisplay('');
+    display.value = '';
 });
