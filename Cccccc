@@ -1,9 +1,6 @@
 
 ```bash
 npx create-react-app hello-world
-
-
-
 hello-world/
 ├── node_modules/
 ├── public/
@@ -20,10 +17,6 @@ hello-world/
 ├── package.json
 └── README.md
 import React from 'react';
-
-
-
-
 function App() {
   return (
     <div className="App">
@@ -31,7 +24,6 @@ function App() {
     </div>
   );
 }
-
 export default App;
 cd hello-world
 npm start
