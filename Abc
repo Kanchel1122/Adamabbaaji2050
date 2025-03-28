@@ -1,35 +1,20 @@
-
+npx create-react-app hello-world
 bash
-npx create-react-app my profile 
-```
-bash
-my profile/
-  node_modules/
-  public/
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
-    reportWebVitals.js
-    setupTests.js
-  .gitignore
-  package.json
-  README.md
-```
+npx create-react-app hello-world
+jsx
+const HelloWorld = () => {
+  return <h1>Hello World!</h1>;
+};
 jsx
 import React from 'react';
+import HelloWorld from './HelloWorld';
 
 function App() {
   return (
     <div className="App">
-      <h1>my profile!</h1>
+      <HelloWorld />
     </div>
   );
 }
-
 bash
 npm start
-```
