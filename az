@@ -1,0 +1,63 @@
+import { useState } from 'eact';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>Counter</h1>
+      <p>{count}</p>
+    </div>
+  );
+}
+Adding Buttons for User Interaction
+import { useState } from 'eact';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const handleIncrease = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>Counter</h1>
+      <p>{count}</p>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
+    </div>
+  );
+}
+Handling Edge Cases
+import { useState } from 'eact';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const handleIncrease = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrease = () => {
+    setCount(count - 1);
+  };
+
+  const handleThreshold = () => {
+    alert('Counter has reached the threshold!');
+  };
+
+  return (
+    <div>
+      <h1>Counter</h1>
+      <p>{count}</p>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
+      <button onClick={handleThreshold}>Threshold</button>
+    </div>
+  );
+}
