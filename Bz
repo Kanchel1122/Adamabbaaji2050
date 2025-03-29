@@ -1,0 +1,94 @@
+Here's a step-by-step guide to setting up the Counter component:
+
+Step 1: Create a new React app
+```
+bash
+npx create-react-app counter-app
+```
+
+Step 2: Create a Counter component
+Create a new file `Counter.js` in the `src` folder:
+
+```
+jsx
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const handleIncrease = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrease = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
+      {count >= 10 && <p>Counter has reached 10!</p>}
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+Step 3: Update App.js to render the Counter component
+Replace the existing code in `App.js` with:
+
+```
+jsx
+import React from 'react';
+import Counter from './Counter';
+
+function App() {
+  return (
+    <div className="App">
+      <Counter />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Step 4: Add CSS styling (optional)
+Create a new file `Counter.css` in the `src` folder:
+
+```
+.Counter {
+  text-align: center;
+  margin-top: 50px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+```
+
+Update `Counter.js` to import the CSS file:
+
+```
+jsx
+import React, { useState } from 'react';
+import './Counter.css';
+```
+
+Step 5: Start the development server
+```
+bash
+npm start
+```
+
+This will render the Counter component with the Increase and Decrease buttons. Clicking the buttons will update the counter in real-time.
+
+Note: This implementation includes a basic edge case handling to prevent the counter from going below zero. Additionally, a message is displayed when the counter reaches 10.
