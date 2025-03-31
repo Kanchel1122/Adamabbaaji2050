@@ -2,19 +2,31 @@ import React, { useState, useEffect } from 'react';
 
 function ListItem({ item }) {
   return (
-    <li key={item.id}>{item.name}</li>
+    <li>{item.name}</li>
   );
 }
 
 function ListItemList() {
   const [items, setItems] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch('https://api.example.com/items')
       .then(response => response.json())
       .then(data => setItems(data))
-      .catch(error => console.error('Error fetching items:', error));
+      .catch(error => {
+        console.error('Error fetching items:', error);
+        setError('Failed to fetch items. Please try again later.');
+      });
   }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (items.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <ul>
