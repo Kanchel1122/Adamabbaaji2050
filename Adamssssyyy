@@ -1,0 +1,67 @@
+bash
+npx create-react-app api-fetch-app
+````
+bash
+npm install axios
+
+```
+jsx
+import React from 'react';
+
+const List = ({ items, renderItem }) => {
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>{renderItem(item)}</li>
+      ))}
+    </ul>
+  );
+};
+
+export default List;
+````
+jsx
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import List from './List';
+
+function App() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error.message);
+        setLoading(false);
+      });
+  }, []);
+
+  const renderItem = item => {
+    return <div>{item.title}</div>;
+  };
+
+  return (
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <List items={data} renderItem={renderItem} />
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
+bash
+npm start
+```
