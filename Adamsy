@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function ListItem({ item }) {
   return (
@@ -6,26 +7,38 @@ function ListItem({ item }) {
   );
 }
 
-function ListItemList() {
+ListItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+function ItemList() {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://api.example.com/items')
       .then(response => response.json())
-      .then(data => setItems(data))
+      .then(data => {
+        setItems(data);
+        setLoading(false);
+      })
       .catch(error => {
         console.error('Error fetching items:', error);
         setError('Failed to fetch items. Please try again later.');
+        setLoading(false);
       });
   }, []);
 
-  if (error) {
-    return <div>{error}</div>;
+  if (loading) {
+    return <div>Loading items...</div>;
   }
 
-  if (items.length === 0) {
-    return <div>Loading...</div>;
+  if (error) {
+    return <div style={{ color: 'red' }}>{error}</div>;
   }
 
   return (
@@ -37,4 +50,4 @@ function ListItemList() {
   );
 }
 
-export default ListItemList;
+export default ItemList;
