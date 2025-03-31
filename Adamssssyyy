@@ -1,11 +1,5 @@
-bash
 npx create-react-app api-fetch-app
-````
-bash
 npm install axios
-
-```
-jsx
 import React from 'react';
 
 const List = ({ items, renderItem }) => {
@@ -18,10 +12,7 @@ const List = ({ items, renderItem }) => {
   );
 };
 
-export default List;
-````
-jsx
-import React, { useState, useEffect } from 'react';
+export default List;import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import List from './List';
 
@@ -61,7 +52,3 @@ function App() {
 }
 
 export default App;
-```
-bash
-npm start
-```
