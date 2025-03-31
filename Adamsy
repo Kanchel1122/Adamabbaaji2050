@@ -1,0 +1,44 @@
+function ListItemList() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.example.com/items')
+     .then(response => response.json())
+     .then(data => setItems(data))
+  }, []);
+
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+}
+
+import React from 'eact';
+function ListItem({ item }) {
+  return (
+    <li key={item.id}>{item.name}</li>
+  );
+}
+import React, { useState, useEffect } from 'eact';
+import ListItem from './ListItem';
+
+function ListItemList() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.example.com/items')
+     .then(response => response.json())
+     .then(data => setItems(data))
+  }, []);
+
+  return (
+    <ul>
+      {items.map(item => (
+        <ListItem key={item.id} item={item} />
+      ))}
+    </ul>
+  );
+}
