@@ -1,5 +1,4 @@
-npx create-react-app api-fetch-app
-npm install axios
+// List.js
 import React from 'react';
 
 const List = ({ items, renderItem }) => {
@@ -12,7 +11,10 @@ const List = ({ items, renderItem }) => {
   );
 };
 
-export default List;import React, { useState, useEffect } from 'react';
+export default List;
+
+// App.js
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import List from './List';
 
@@ -29,8 +31,9 @@ function App() {
         setLoading(false);
       })
       .catch(error => {
-        setError(error.message);
+        setError('Something went wrong, please try again later.');
         setLoading(false);
+        console.error(error);
       });
   }, []);
 
