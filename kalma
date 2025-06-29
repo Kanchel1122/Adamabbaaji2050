@@ -1,0 +1,130 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Example</title>
+  <style>
+    /* Add some basic styling */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      width: 300px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      height: 40px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="register-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <button type="submit">Register</button>
+  </form>
+
+  <h2>Login</h2>
+  <form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="login-username" name="username">
+    <label for="password">Password:</label>
+    <input type="password" id="login-password" name="password">
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    // Register user
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      await fetch('http:                             
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      alert('User registered');
+    });
+
+                 
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      const response
+
+
+// server.js
+const express = require('express');
+const app = express();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb:                                                                                
+
+const UserSchema = new mongoose.Schema({
+  username: String,
+  password: String
+});
+
+const User = mongoose.model('//localhost/auth-example', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const UserSchema = new mongoose.Schema({
+  username: String,
+  password: String
+});
+
+const User = mongoose.model('User', UserSchema);
+
+app.use(express.json());
+
+                
+app.post('// Register user
+app.post('/register', async (req, res) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  const user = new User({ username: req.body.username, password: hashedPassword });
+  await user.save();
+  res.send('User registered');
+});
+
+             
+app.post('// Login user
+app.post('/login', async (req, res) => {
+  const user = await User.findOne({ username: req.body.username });
+  if (!user) return res.status(401).send('Invalid username or password');
+  const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+  if (!isValidPassword) return res.status(401).send('Invalid username or password');
+  const token = jwt.sign({ userId: user._id }, 'secretkey');
+  res.send({ token });
+});
+
+app.listen(3000, () => console.log('Server listening on port 3000'));
