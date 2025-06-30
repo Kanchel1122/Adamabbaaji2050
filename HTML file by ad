@@ -1,0 +1,174 @@
+Adamabbaaji2050/
+│
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── Header.js
+│   │   ├── Home.js
+│   │   ├── Search.js
+│   │   ├── MovieDetails.js
+│   │   └── index.js
+│   ├── .env
+│   └── package.json
+│
+├── server/                 # Node/Express backend
+│   ├── models/
+│   │   └── User.js
+│   ├── routes/
+│   │   └── auth.js
+│   ├── .env
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './Header';
+import Home from './Home';
+import Search from './Search';
+import MovieDetails from './MovieDetails';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function Header() {
+  return (
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/search">Search</Link></li>
+      </ul>
+    </nav>
+  );
+}
+
+export default Header;
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function Home() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
+      .then(response => setMovies(response.data.results))
+      .catch(error => console.error(error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Popular Movies</h1>
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>{movie.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Home;
+
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String
+});
+
+module.exports = mongoose.model('User', userSchema);
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function Home() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
+      .then(response => setMovies(response.data.results))
+      .catch(error => console.error(error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Popular Movies</h1>
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>{movie.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Home;
+
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String
+});
+
+module.exports = mongoose.model('User', userSchema);const express = require('express');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+const router = express.Router();
+
+// Register
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({ username, password: hashedPassword });
+  await user.save();
+  res.send('User registered successfully');
+});
+
+// Login
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
+  if (!user) return res.status(401).send('Invalid username or password');
+  const isValidPassword = await bcrypt.compare(password, user.password);
+  if (!isValidPassword) return res.status(401).send('Invalid username or password');
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  res.send({ token });
+});
+
+// Middleware for protected routes
+const authenticate = (req, res, next) => {
+  const authHeader = req.header('Authorization');
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).send('Access denied');
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(400).send('Invalid token');
+  }
+};
+
+router.get('/protected', authenticate, (req, res) => {
+  res.send('Hello, authenticated user!');
+});
+
+module.exports = router;
+
+
