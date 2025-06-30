@@ -1,0 +1,117 @@
+// Header.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Header = () => {
+  return (
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/search">Search</Link></li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Header;
+
+
+// Home.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const Home = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://api.themoviedb.org/3/movie/popular')
+      .then(response => setMovies(response.data.results))
+      .catch(error => console.error(error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Popular Movies</h1>
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>{movie.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Home;
+
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Header from './Header';
+import Home from './Home';
+import Search from './Search';
+import MovieDetails from './MovieDetails';
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/search" component={Search} />
+        <Route path="/movie/:id" component={MovieDetails} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+export default App;
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String
+});
+
+const User = mongoose.model('User', userSchema);
+
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({ username, password: hashedPassword });
+  await user.save();
+  res.send('User registered successfully');
+});
+
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
+  if (!user) return res.status(401).send('Invalid username or password');
+  const isValidPassword = await bcrypt.compare(password, user.password);
+  if (!isValidPassword) return res.status(401).send('Invalid username or password');
+  const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
+  res.send({ token });
+});
+
+const authenticate = (req, res, next) => {
+  const token = req.header('Authorization');
+  if (!token) return res.status(401).send('Access denied');
+  try {
+    const decoded = jwt.verify(token, 'secretkey');
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(400).send('Invalid token');
+  }
+};router.get('/protected', authenticate, (req, res) => {
+  res.send('Hello, authenticated user!');
+});
+
+const apiKey = 'YOUR_API_KEY';
+const movieId = 123;
+fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
+  .then(response => response.json())
+  .then(data => console.log(data));
